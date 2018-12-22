@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="-1" guice-stage="DEVELOPMENT" name="Failed suite [AnthonyAuto]">
+  <listeners>
+    <listener class-name="com.anthony.utils.Reporting"/>
+  </listeners>
+  <test name="WebUI automation test(failed)">
+    <parameter name="browser" value="chrome"/>
+    <classes>
+      <class name="com.anthony.testCases.TC_NewCustomer_004">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setup"/>
+          <include name="NewCustomer"/>
+        </methods>
+      </class> <!-- com.anthony.testCases.TC_NewCustomer_004 -->
+    </classes>
+  </test> <!-- WebUI automation test(failed) -->
+</suite> <!-- Failed suite [AnthonyAuto] -->

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="AnthonyAuto">
+
+<listeners>
+
+	<listener class-name="com.anthony.utils.Reporting" />
+
+</listeners>
+	
+    <test name="WebUI automation test">
+    	<parameter name="browser" value="chrome" />
+        <classes>
+           
+             <!-- <class name="com.anthony.testCases.TC_LoginPage_003"/> -->
+            <class name="com.anthony.testCases.TC_NewCustomer_004"/>
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->
