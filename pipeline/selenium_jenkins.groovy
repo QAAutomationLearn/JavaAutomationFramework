@@ -36,8 +36,8 @@ pipeline{
 	        steps{
 	            script{
 	                node(win_node){
-	                    selenium_test = load ${env.WORKSPACE} + "\\pipeline\\selenium.groovy"
-	                    config_file = ${env.WORKSPACE} + "\\Config\\config.properties"
+	                    selenium_test = load env.WORKSPACE + "\\pipeline\\selenium.groovy"
+	                    config_file = env.WORKSPACE + "\\Config\\config.properties"
 	                    try{
 	                        selenium_test.setKeyValue("browser", "abc123", config_file)
 	                    }catch (Exception e) {
