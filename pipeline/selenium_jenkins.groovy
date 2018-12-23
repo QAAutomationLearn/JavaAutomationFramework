@@ -39,7 +39,9 @@ pipeline{
 	                    selenium_test = load env.WORKSPACE + "\\pipeline\\selenium.groovy"
 	                    config_file = env.WORKSPACE + "\\Config\\config.properties"
 	                    try{
-	                        selenium_test.setKeyValue("browser", "abc123", config_file)
+	                        selenium_test.setKeyValue2("browser", "abc123", config_file)
+	                        file_content = readFile config_file
+                            println file_content
 	                    }catch (Exception e) {
 	                        error("Error met:" + e)
 	                    }
