@@ -1,9 +1,5 @@
 import hudson.model.*;
 
-println env.JOB_NAME
-println env.BUILD_NUMBER
-
-
 pipeline{
 
     agent any
@@ -17,8 +13,10 @@ pipeline{
 	    stage("Initialization"){
 	        steps{
 	            script{
-	                node(NODE?.trim()) {
-	                    selenium_test = load ${env.WORKSPACE} + "\\pipeline\\selenium.groovy"
+	                node(any) {
+	                    browser = BROWSER_TYPE?.trim()
+	                    test_url = TEST_SERVER_URL?.trim()
+	                    win_node = NODE?.trim()
 	                }
 	            }
 	        }
@@ -27,7 +25,7 @@ pipeline{
 	    stage("Git Checkout"){
 	        steps{
 	            script{
-	                node(NODE?.trim()) {
+	                node(win_node) {
 	                     checkout([$class: 'GitSCM', branches: [[name: '*/master']],
 						    userRemoteConfigs: [[credentialsId: '6f4fa66c-eb02-46dc-a4b3-3a232be5ef6e', 
 							url: 'https://github.com/QAAutomationLearn/JavaAutomationFramework.git']]])
@@ -39,7 +37,8 @@ pipeline{
         stage("Set key value"){
 	        steps{
 	            script{
-	                node(NODE?.trim()){
+	                node(win_node){
+	                    selenium_test = load ${env.WORKSPACE} + "\\pipeline\\selenium.groovy"
 	                    config_file = ${env.WORKSPACE} + "\\Config\\config.properties"
 	                    selenium_test.setKeyValue("browser", "abc123", config_file)
 	                }
@@ -50,7 +49,7 @@ pipeline{
 	    stage("Run Selenium Test"){
 	        steps{
 	            script{
-	                node(NODE?.trim()){
+	                node(win_node){
 	                    println "Here will start to run selenium test."
 	                }
 	            }
