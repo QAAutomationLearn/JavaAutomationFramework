@@ -13,7 +13,7 @@ pipeline{
 	    stage("Initialization"){
 	        steps{
 	            script{
-	                browser = BROWSER_TYPE?.trim()
+	                browser_type = BROWSER_TYPE?.trim()
 	                test_url = TEST_SERVER_URL?.trim()
 	                win_node = NODE?.trim()
 	            }
@@ -39,7 +39,8 @@ pipeline{
 	                    selenium_test = load env.WORKSPACE + "\\pipeline\\selenium.groovy"
 	                    config_file = env.WORKSPACE + "\\Configs\\config.properties"
 	                    try{
-	                        selenium_test.setKeyValue2("browser", "abc123", config_file)
+	                        selenium_test.setKeyValue2("browser", browser_type, config_file)
+	                        //test_url 你自己替代
 	                        file_content = readFile config_file
                             println file_content
 	                    }catch (Exception e) {
@@ -54,7 +55,8 @@ pipeline{
 	        steps{
 	            script{
 	                node(win_node){
-	                    println "Here will start to run selenium test."
+	                    run_bat = env.WORKSPACE + "\\run.bat"
+	                    bat (run_bat)
 	                }
 	            }
 	        }
