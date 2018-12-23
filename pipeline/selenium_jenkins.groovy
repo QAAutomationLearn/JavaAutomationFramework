@@ -13,11 +13,9 @@ pipeline{
 	    stage("Initialization"){
 	        steps{
 	            script{
-	                node(any) {
-	                    browser = BROWSER_TYPE?.trim()
-	                    test_url = TEST_SERVER_URL?.trim()
-	                    win_node = NODE?.trim()
-	                }
+	                browser = BROWSER_TYPE?.trim()
+	                test_url = TEST_SERVER_URL?.trim()
+	                win_node = NODE?.trim()
 	            }
 	        }
 	    }
