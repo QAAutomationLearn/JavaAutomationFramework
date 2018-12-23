@@ -10,7 +10,7 @@ pipeline{
     parameters {
         string(name: 'BROWSER_TYPE', defaultValue: 'chrome', description: 'Type a browser type, should be chrome/firefox')
         string(name: 'TEST_SERVER_URL', defaultValue: '', description: 'Type the test server url')
-        string(name: 'NODE', defaultValue: '', description: 'Please choose a windows node to execute this job.')
+        string(name: 'NODE', defaultValue: 'win-anthony-demo', description: 'Please choose a windows node to execute this job.')
     }
     
 	stages{
