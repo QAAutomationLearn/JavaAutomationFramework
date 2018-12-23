@@ -50,6 +50,6 @@ def setKeyValue2(key, value, file_path) {
         file_content_new += line + "\n"
     }
 
-    writeFile file: file_path, text: new_file_content, encoding: "UTF-8"
+    writeFile file: file_path, text: file_content_new, encoding: "UTF-8"
 }
 return this;
