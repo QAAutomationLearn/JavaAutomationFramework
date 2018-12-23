@@ -35,12 +35,21 @@ def setKeyValue2(key, value, file_path) {
     println file_content_old
     //遍历每一行，判断，然后替换字符串
     lines = file_content_old.tokenize("\n")
+    new_lines = []
     lines.each { line ->
         if(line.trim().startsWith(key)) {
             line = key + "=" + value
+            new_lines.add(line)
+        }else {
+            new_lines.add(line)
         }
     }
     // write into file
-    writeFile file: file_path, text: lines, encoding: "UTF-8"
+    file_content_new = ""
+    new_lines.each{line ->
+        file_content_new += line + "\n"
+    }
+
+    writeFile file: file_path, text: new_file_content, encoding: "UTF-8"
 }
 return this;
