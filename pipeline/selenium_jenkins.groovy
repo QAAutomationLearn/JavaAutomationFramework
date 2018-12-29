@@ -66,7 +66,7 @@ pipeline{
     post{
         always{
             script{
-                step([$class: 'Publisher', reportFilenamePattern: '**/test-output/testng-results.xml'])
+                step([$class: 'Publisher', reportFilenamePattern: '**/test-output/Test-Report-*.html'])
             }
         }
     }
