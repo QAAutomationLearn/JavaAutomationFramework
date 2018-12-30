@@ -1,2 +1,2 @@
-cd C:\Users\Anthont\git\AnthonyWebAutoDemo
+cd C:\JenkinsNode\workspace\selenium-pipeline-demo
 mvn clean install
