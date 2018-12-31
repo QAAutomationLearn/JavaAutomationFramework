@@ -9,7 +9,6 @@ def setKeyValue(key, value, file_path) {
     // read file, get string object
     file_content_old = readFile file_path
     println file_content_old
-    //遍历每一行，判断，然后替换字符串
     lines = file_content_old.tokenize("\n")
     new_lines = []
     lines.each { line ->
@@ -28,4 +27,13 @@ def setKeyValue(key, value, file_path) {
 
     writeFile file: file_path, text: file_content_new, encoding: "UTF-8"
 }
+
+def get_html_report_filename(report_store_path) {
+    get_html_file_command = "cd ${report_store_path}; dir /b /s *.html"
+    out = bat(script:get_html_file_command,returnStdout: true).trim()
+    println out
+    html_report_filename = out.split("test-output\\")[1]
+    return html_report_filename
+}
+
 return this;

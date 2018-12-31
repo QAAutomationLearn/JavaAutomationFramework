@@ -64,12 +64,13 @@ pipeline{
 	        steps{
 	            script{
 	                node(win_node){
+	                   html_file_name = selenium_test.get_html_report_filename(env.WORKSPACE + "\\test-output")
 	                   publishHTML (target: [
                         	allowMissing: false,
                         	alwaysLinkToLastBuild: false,
                         	keepAll: true,
                         	reportDir: 'test-output',
-                        	reportFiles: 'selenium-report.html',
+                        	reportFiles: html_file_name,
                         	reportName: "Selenium Test Report"
                     	])
 	                }
