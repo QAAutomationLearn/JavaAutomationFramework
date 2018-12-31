@@ -86,6 +86,8 @@ pipeline{
                     //delete report file
                     println "Start to delete old html report file."
                     bat("del /s /q C:\\JenkinsNode\\workspace\\selenium-pipeline-demo\\test-output\\*.html")
+                    //list the log files on jenkins ui
+                    archive 'log/*.log'
                 }
             }
         }
