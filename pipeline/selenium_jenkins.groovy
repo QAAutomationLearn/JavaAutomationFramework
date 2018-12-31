@@ -66,7 +66,16 @@ pipeline{
     post{
         always{
             script{
-                step([$class: 'Publisher', reportFilenamePattern: '**/test-output/Test-Report-*.html'])
+                node(win_node){
+                    publishHTML (target: [
+                        allowMissing: false,
+                        alwaysLinkToLastBuild: false,
+                        keepAll: true,
+                        reportDir: 'test-output',
+                        reportFiles: 'index.html',
+                        reportName: "HTML Report"
+                    ])
+                }
             }
         }
     }
