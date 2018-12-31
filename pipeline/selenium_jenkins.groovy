@@ -40,7 +40,6 @@ pipeline{
 	                    config_file = env.WORKSPACE + "\\Configs\\config.properties"
 	                    try{
 	                        selenium_test.setKeyValue("browser", browser_type, config_file)
-	                        //test_url 你自己替代
 	                        file_content = readFile config_file
                             println file_content
 	                    }catch (Exception e) {
@@ -85,7 +84,7 @@ pipeline{
                 node(win_node){
                     //delete report file
                     println "Start to delete old html report file."
-                    bat("rd /s /q C:\\JenkinsNode\\workspace\\selenium-pipeline-demo\\test-output\\index.html")
+                    bat("del /s /q C:\\JenkinsNode\\workspace\\selenium-pipeline-demo\\test-output\\index.html")
                 }
             }
         }
