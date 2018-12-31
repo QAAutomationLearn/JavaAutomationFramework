@@ -69,8 +69,8 @@ pipeline{
                         	alwaysLinkToLastBuild: false,
                         	keepAll: true,
                         	reportDir: 'test-output',
-                        	reportFiles: 'index.html',
-                        	reportName: "HTML Report"
+                        	reportFiles: 'selenium-report.html',
+                        	reportName: "Selenium Test Report"
                     	])
 	                }
 	            }
@@ -84,7 +84,7 @@ pipeline{
                 node(win_node){
                     //delete report file
                     println "Start to delete old html report file."
-                    bat("del /s /q C:\\JenkinsNode\\workspace\\selenium-pipeline-demo\\test-output\\index.html")
+                    bat("del /s /q C:\\JenkinsNode\\workspace\\selenium-pipeline-demo\\test-output\\*.html")
                 }
             }
         }
