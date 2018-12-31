@@ -61,20 +61,31 @@ pipeline{
 	            }
 	        }
 	    }
+	    stage("Publish Selenium HTML Report"){
+	        steps{
+	            script{
+	                node(win_node){
+	                   publishHTML (target: [
+                        	allowMissing: false,
+                        	alwaysLinkToLastBuild: false,
+                        	keepAll: true,
+                        	reportDir: 'test-output',
+                        	reportFiles: 'index.html',
+                        	reportName: "HTML Report"
+                    	])
+	                }
+	            }
+	        }
+	    }
 	}
 
     post{
         always{
             script{
                 node(win_node){
-                    publishHTML (target: [
-                        allowMissing: false,
-                        alwaysLinkToLastBuild: false,
-                        keepAll: true,
-                        reportDir: 'test-output',
-                        reportFiles: 'index.html',
-                        reportName: "HTML Report"
-                    ])
+                    //delete report file
+                    println "Start to delete old html report file."
+                    bat("rd /s /q C:\\JenkinsNode\\workspace\\selenium-pipeline-demo\\test-output\\index.html")
                 }
             }
         }
