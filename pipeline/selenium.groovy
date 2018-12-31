@@ -29,7 +29,7 @@ def setKeyValue(key, value, file_path) {
 }
 
 def get_html_report_filename(report_store_path) {
-    get_html_file_command = "cd ${report_store_path}; dir /b /s *.html"
+    get_html_file_command = "cd ${report_store_path} & dir /b /s *.html"
     out = bat(script:get_html_file_command,returnStdout: true).trim()
     println out
     html_report_filename = out.split("test-output")[1].replace('\\', '')
